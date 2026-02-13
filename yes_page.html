@@ -21,14 +21,49 @@ img {
   border-radius: 20px;
   margin-top: 30px;
 }
+  .heart {
+  position: fixed;
+  top: -20px;
+  font-size: 24px;
+  animation: fall linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0.9;
+  }
+}
 </style>
 </head>
 
 <body>
+
 <h1>Ураааа 💖</h1>
 <h2>Я очень сильно тебя люблю!</h2>
 
 <img src="photo.jpg" alt="our photo">
+
+  <script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+  heart.style.fontSize = (16 + Math.random() * 24) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
 
 </body>
 </html>
